@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFUI.Views"
         mc:Ignorable="d" FontSize="15" WindowStartupLocation="CenterScreen"
-        Title="ShellView" Height="800" Width="1350">
-    <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
+        Title="ShellView" Height="600" Width="1200">
+    <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -24,6 +28,9 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -60,7 +67,14 @@
                    Grid.Row="1"
                    VerticalAlignment="Center" Grid.ColumnSpan="1"
                    FontWeight="Bold" FontSize="15"/>
-            
+
+            <Image Grid.Row="1" Grid.Column="13" 
+                Grid.RowSpan="6"
+                Source="H:\Simuladores\logo_bdv_wpf.jpg" 
+               MaxHeight="150" MinHeight="150" 
+               MaxWidth="150" MinWidth="150" 
+               HorizontalAlignment="Right" 
+               VerticalAlignment="Top" x:Name="logoBdv" />
 
             <!--ROW 2-->
             <ComboBox x:Name="nacionalidad" Grid.Column="1" Grid.Row="2" 
@@ -74,56 +88,81 @@
 
             <Button x:Name="buscar" FontWeight="Bold" 
                 Grid.Column="3" Grid.Row="2" Content="BUSCAR" 
-                Width="100" FontSize="15" 
+                Width="100" Height="50" FontSize="15" 
                 Click="Buscar_Click" Margin="5"/>
 
             <Button x:Name="limpiar" FontWeight="Bold" 
                 Grid.Column="4" Grid.Row="2" 
                 Content="LIMPIAR" 
-                Width="100" FontSize="15"
+                Width="100" Height="50" FontSize="15"
                 Margin="5" Click="Limpiar_Click"/>
 
             <StackPanel Grid.Column="5" 
                         VerticalAlignment="Center" 
-                        Grid.Row="2">
+                        Grid.Row="2" x:Name="optionStack">
                 <CheckBox x:Name="oficioRiesgoso">OFICIO RIESGOSO</CheckBox>
                 <CheckBox x:Name="casoEspecial">ESPECIAL</CheckBox>
-                <CheckBox x:Name="casoReferido" Click="CasoReferido_Click">REFERIDOS</CheckBox>
+                <CheckBox x:Name="casoReferido" 
+                          Click="CasoReferido_Click">REFERIDOS</CheckBox>
+                <CheckBox x:Name="casoEmpleado" Click="CasoEmpleado_Click">EMPLEADO</CheckBox>
             </StackPanel>
 
-            <Image Grid.Row="1" Grid.Column="10" 
-                Grid.RowSpan="6"
-                Source="A:\logo_bdv_wpf.jpg" 
-               MaxHeight="200" MinHeight="200" 
-               MaxWidth="200" MinWidth="200" 
-               HorizontalAlignment="Right" 
-               VerticalAlignment="Top"/>
+            <Button x:Name="ivvsConsulta" Content="IVVS" 
+                    Width="100" FontSize="15"
+                Margin="5" Grid.Column="6" 
+                    FontWeight="Bold" Height="50" Grid.Row="2"
+                    Click="IvvsConsulta_Click"/>
+
+            <StackPanel Grid.Column="7" 
+                        VerticalAlignment="Center" 
+                        Grid.Row="2" x:Name="optionStack2">
+                <ComboBox HorizontalAlignment="Left" 
+                          x:Name="dia" Width="50" Height="25" />
+                <ComboBox HorizontalAlignment="Left" 
+                          x:Name="mes" Width="40" Height="25" />
+                <ComboBox HorizontalAlignment="Left" 
+                          x:Name="año" Width="60" Height="25" />
+            </StackPanel>
+            <StackPanel Grid.Column="8" 
+                        VerticalAlignment="Center" 
+                        Grid.Row="2" x:Name="optionStack3">
+                <TextBlock>DIA</TextBlock>
+                <TextBlock>MES</TextBlock>
+                <TextBlock>AÑO</TextBlock>
+            </StackPanel>
 
             <!--ROW 3-->
+            
             <TextBlock Text="PRODUCTO" Grid.Column="1" Grid.Row="3"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text1"/>
             <TextBlock Text="NRO_CREDITO" Grid.Column="2" Grid.Row="3"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text2"/>
             <TextBlock Text="HISTORICO" Grid.Column="3" Grid.Row="3"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text3"/>
             <TextBlock Text="MONTO LIQUIDADO" Grid.Column="4" Grid.Row="3"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text4"/>
             <TextBlock Text="FECHA_LIQUIDACION" Grid.Column="5" Grid.Row="3"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text5"/>
             <TextBlock Text="FECHA_ULT_AUMENTO" Grid.Column="6" Grid.Row="3"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text6"/>
             <TextBlock Text="MORA" Grid.Column="7" Grid.Row="3"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
-
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text7"/>
+            
             <!--ROW 4-->
-
             <ListBox x:Name="listaProducto" Grid.Column="1" 
                  Grid.Row="4" FontSize="15" />
             <ListBox x:Name="listaNroCredito" Grid.Column="2" 
@@ -140,28 +179,32 @@
                  Grid.Row="4" FontSize="15" />
 
             <!--ROW 5-->
-
             <TextBlock Text="MES_1" Grid.Column="1" Grid.Row="5"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text8"/>
             <TextBlock Text="MES_2" Grid.Column="2" Grid.Row="5"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text9"/>
             <TextBlock Text="MES_3" Grid.Column="3" Grid.Row="5"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text10"/>
             <TextBlock Text="SALARIO" Grid.Column="4" Grid.Row="5"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text11"/>
             <TextBlock Text="NOMBRE_EMPRESA" Grid.Column="5" Grid.Row="5"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text12"/>
             <TextBlock Text="RIF_EMPRESA" Grid.Column="6" Grid.Row="5"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text13"/>
 
             <!--ROW 6-->
-
             <ListBox x:Name="listaMes_1" Grid.Column="1" 
                  Grid.Row="6" FontSize="15" />
             <ListBox x:Name="listaMes_2" Grid.Column="2" 
@@ -176,23 +219,27 @@
                  Grid.Row="6" FontSize="15"  />
 
             <!--ROW 7-->
-
             <TextBlock Text="MES_1_SALDO" Grid.Column="1" Grid.Row="7"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text14"/>
             <TextBlock Text="MES_2_SALDO" Grid.Column="2" Grid.Row="7"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text15"/>
             <TextBlock Text="MES_3_SALDO" Grid.Column="3" Grid.Row="7"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text16"/>
             <TextBlock Text="SALDO_PROMEDIO" Grid.Column="4" Grid.Row="7"  
                    VerticalAlignment="Bottom" Margin="5"
-                   FontWeight="Bold" FontSize="15"/>
-
-
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text17"/>
+            <TextBlock Text="NOMBRE" Grid.Column="5" Grid.Row="7"  
+                   VerticalAlignment="Bottom" Margin="5"
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text18"/>
             <!--ROW 8-->
-
             <ListBox x:Name="listaMes_1_saldo" Grid.Column="1" 
                  Grid.Row="8" FontSize="15" />
             <ListBox x:Name="listaMes_2_saldo" Grid.Column="2" 
@@ -201,32 +248,41 @@
                  Grid.Row="8" FontSize="15" />
             <ListBox x:Name="listaSaldoPro" Grid.Column="4" 
                  Grid.Row="8" FontSize="15" />
+            <TextBlock x:Name="clienteNombre" Grid.Column="5" 
+                       Grid.Row="8" Grid.ColumnSpan="3" Margin="5"
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center"
+                       Background="Green" 
+                       FontWeight="Bold" Foreground="White"/>
 
             <!--ROW 9-->
-
             <TextBlock Text="CARGAS BDV:" Grid.Column="1" Grid.Row="9"  
                    VerticalAlignment="Bottom" Margin="0 10 5 0"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text19"/>
             <TextBlock x:Name="cargasBdv" Grid.Column="2" Grid.Row="9"  
                    VerticalAlignment="Bottom" Margin="0 10 5 0"
                    FontWeight="Bold" FontSize="15"/>
             <TextBlock Text="OTRAS CARGAS:" Grid.Column="3" Grid.Row="9"  
                    VerticalAlignment="Bottom" Margin="0 10 5 0"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text20"/>
             <TextBox x:Name="cargasOtras" Grid.Column="4" Grid.Row="9"  
                    VerticalAlignment="Bottom" Margin="0 10 5 0"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15" LostFocus="CargasOtras_LostFocus"/>
             <TextBlock Text="MONTO APROBADO" Grid.Column="6" Grid.Row="9"  
                    VerticalAlignment="Center" Margin="0 10 5 0"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text21"/>
 
             <!--ROW 10-->
             <TextBlock Text="OTROS INGRESOS:" Grid.Column="3" Grid.Row="10"  
                    VerticalAlignment="Bottom" Margin="0 10 5 0"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text22"/>
             <TextBox x:Name="ingresosOtros" Grid.Column="4" Grid.Row="10"  
                    VerticalAlignment="Bottom" Margin="0 10 5 0"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15" LostFocus="IngresosOtros_LostFocus"/>
             <Button x:Name="calcular" FontWeight="Bold" 
                 Grid.Column="5" Grid.Row="10" 
                 Content="CALCULAR" 
@@ -235,32 +291,142 @@
             <TextBlock x:Name="riesgoConsolidado" Text="" Grid.Column="6" 
                        Grid.Row="10"  
                    VerticalAlignment="Center" Margin="0 10 5 0"
-                   FontWeight="Bold" FontSize="25" Grid.ColumnSpan="3"/>
-                                
+                   FontWeight="Bold" FontSize="15" Grid.ColumnSpan="3"/>
+            <StackPanel x:Name="nroTarjetaText" Orientation="Horizontal" Grid.Column="1" Grid.Row="10" 
+                        Visibility="Collapsed">
+                <ComboBox x:Name="nroTarjeta" Width="40" Height="25"/>
+                <TextBlock Text="NRO DE TDC" Margin="10 0 0 0" VerticalAlignment="Center" />
+            </StackPanel>
+
             <!--ROW 11-->
             <TextBlock Text="TARJETAS" Grid.Column="1" Grid.Row="11"  
                    VerticalAlignment="Bottom" Margin="0 10 5 0"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text23"/>
             <TextBlock Text="LIMITES" Grid.Column="2" Grid.Row="11"  
-                   VerticalAlignment="Bottom" Margin="0 10 5 0"
-                   FontWeight="Bold" FontSize="15"/>
+                   VerticalAlignment="Top" Margin="0,25,5,0"
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text24"/>
             <TextBlock Text="LIMITES OTORGADOS" Grid.Column="3" Grid.Row="11"  
                    VerticalAlignment="Bottom" Margin="0 10 5 0"
-                   FontWeight="Bold" FontSize="15"/>
+                   FontWeight="Bold" FontSize="15"
+                       x:Name="text25"/>
             <TextBox x:Name="aprobadoreferido" Text="" Grid.Column="6" 
                        Grid.Row="11"  
                    VerticalAlignment="Center" Margin="0 10 5 0"
-                   FontWeight="Bold" FontSize="25" Grid.ColumnSpan="3"
+                   FontWeight="Bold" FontSize="15" Grid.ColumnSpan="3"
                      IsEnabled="False" LostFocus="Aprobadoreferido_LostFocus"/>
+            <Button x:Name="imprimir" FontWeight="Bold" 
+                Grid.Column="5" Grid.Row="11" 
+                Content="IMPRIMIR" 
+                Width="100" FontSize="15"
+                Margin="5" Click="IMPRIMIR_Click"/>
 
             <!--ROW 12-->
             <ListBox x:Name="listaTarjetas" Grid.Column="1" 
-                 Grid.Row="12" FontSize="25" />
+                 Grid.Row="12" FontSize="15" />
             <ListBox x:Name="listaLimite" Grid.Column="2" 
-                 Grid.Row="12" FontSize="25" />
+                 Grid.Row="12" FontSize="15" />
             <ListBox x:Name="listaLimiteOtorgado" Grid.Column="3" 
-                 Grid.Row="12" FontSize="25" FontWeight="Bold" />
+                 Grid.Row="12" FontSize="15" FontWeight="Bold" 
+                     Grid.ColumnSpan="2"/>
+            <Button x:Name="archivar_TDC" FontWeight="Bold" 
+                Grid.Column="5" Grid.Row="12" 
+                Content="ARCHIVAR" 
+                Width="100" FontSize="15"
+                Margin="5" Click="Archivar_Click"/>
 
+
+            <!--ROW 13-->
+            <TextBlock x:Name="textCargo" Text="CARGO" Grid.Column="1" 
+                       Grid.Row="13"  
+                   VerticalAlignment="Bottom" Margin="0 10 5 0"
+                   FontWeight="Bold" FontSize="15" Visibility="Hidden"/>
+            <TextBlock x:Name="textNombre" Text="NRO_TARJETA" 
+                       Grid.Column="2" Grid.Row="13"  
+                   VerticalAlignment="Bottom" Margin="0 10 5 0"
+                   FontWeight="Bold" FontSize="15" Visibility="Hidden"/>
+            <TextBlock x:Name="textNroTdc" Text="LIMITE ACTUAL" Grid.Column="3" 
+                       Grid.Row="13"  
+                   VerticalAlignment="Bottom" Margin="5 10 5 0"
+                   FontWeight="Bold" FontSize="15" Visibility="Hidden"
+                       />
+            <TextBlock x:Name="textTdcLimAct" Text="LIMITE ASIGNADO" 
+                       Grid.Column="4" Grid.Row="13"  
+                   VerticalAlignment="Bottom" Margin="5 10 5 0"
+                   FontWeight="Bold" FontSize="15" Visibility="Hidden"/>
+            <TextBlock x:Name="textTdcLimAsig" Text="NOMBRE" 
+                       Grid.Column="5" Grid.Row="13"  
+                   VerticalAlignment="Bottom" Margin="0 10 5 0"
+                   FontWeight="Bold" FontSize="15" Visibility="Hidden"/>
+            <TextBlock x:Name="observacionText" Grid.Column="6" Grid.Row="13" Text="OBSERVACIÓN:"
+                       FontWeight="Bold" Height="30" VerticalAlignment="Top"></TextBlock>
+            <TextBox x:Name="observacion" Grid.Column="7" Grid.Row="13" 
+                     AcceptsReturn="True" Grid.ColumnSpan="3" 
+                     TextWrapping="Wrap" MaxLines="3"
+                     MaxWidth="250"/>
+
+            <!--ROW 14-->
+            <ListBox x:Name="listaCargo" Grid.Column="1" 
+                 Grid.Row="14" FontSize="15" Visibility="Hidden"/>
+            <ListBox x:Name="listaTdcEmp" Grid.Column="2" 
+                 Grid.Row="14" FontSize="15" Visibility="Hidden"/>
+            <ListBox x:Name="listaTdcLimite" Grid.Column="3" 
+                 Grid.Row="14" FontSize="15" Visibility="Hidden"/>
+            <ListBox x:Name="listaTdcLimiteAsig" Grid.Column="4" 
+                 Grid.Row="14" FontSize="15" 
+                     FontWeight="Bold" Visibility="Hidden"/>
+            <ListBox x:Name="listaNombre" Grid.Column="5" 
+                 Grid.Row="14" FontSize="15" Grid.ColumnSpan="3" 
+                     Visibility="Hidden"/>
+            <TextBlock x:Name="referidoPorText" Grid.Column="6" 
+                       Grid.Row="14" Text="REFERIDO POR:"
+                       FontWeight="Bold"></TextBlock>
+            <TextBox x:Name="referidoPor" Grid.Column="7" Grid.Row="14" 
+                     AcceptsReturn="True" TextWrapping="Wrap" MaxLines="3"
+                     MaxWidth="250" Grid.ColumnSpan="3" IsEnabled="False"/>
+            <!--ROW 14-->
+            <TextBlock x:Name="clienteNombreImp" Grid.Column="1" 
+                       Grid.Row="14" Grid.ColumnSpan="3" Margin="5"
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center"
+                       Background="Green" Visibility="Collapsed"
+                       FontWeight="Bold" Foreground="White"/>
+
+            <!--ROW 15-->
+            <TextBlock x:Name="text26" Grid.Column="1" 
+                       Grid.Row="15" Text="APROBADO CONSOLIDADO:" Margin="5"
+                       VerticalAlignment="Center" Grid.ColumnSpan="2"
+                       HorizontalAlignment="Left" Visibility="Collapsed"
+                       FontWeight="Bold"/>
+            <TextBlock x:Name="riesgoConsolidadoImp" Grid.Column="3" 
+                       Grid.Row="15" Margin="5"
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Right"
+                       Background="Green" Visibility="Collapsed"
+                       FontWeight="Bold"/>
+
+            <!--ROW 16-->
+            <TextBlock x:Name="observacionTextImp" Grid.Column="1" 
+                       Grid.Row="16" Text="OBSERVACIÓN:"
+                       FontWeight="Bold" Height="30" 
+                       VerticalAlignment="Top" Visibility="Collapsed" />
+            <TextBox x:Name="observacionImp" Grid.Column="2" 
+                     Grid.Row="16" 
+                     AcceptsReturn="True" Grid.ColumnSpan="3" 
+                     TextWrapping="Wrap" MaxLines="3"
+                     MaxWidth="250" Visibility="Collapsed"/>
+            <!--ROW 17-->
+            <TextBlock x:Name="referidoPorTextImp" Grid.Column="1" 
+                       Grid.Row="17" Text="REFERIDO POR:"
+                       FontWeight="Bold" Visibility="Collapsed"/>
+            <TextBox x:Name="referidoPorImp" Grid.Column="2" 
+                     Grid.Row="17" 
+                     AcceptsReturn="True" TextWrapping="Wrap"
+                     MaxLines="3" Visibility="Collapsed"
+                     MaxWidth="250" Grid.ColumnSpan="3" 
+                     IsEnabled="False"/>
+                   
         </Grid>
-        </ScrollViewer>
+    </ScrollViewer>
 </Window>

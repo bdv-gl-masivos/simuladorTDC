@@ -13,5 +13,6 @@ namespace WPFUI.Models
         public double MES_2 { get; set; }
         public double MES_3 { get; set; }
         public double SALDO_PROMEDIO { get; set; }
+        public string NOMBRE { get; set; }
     }
 }
